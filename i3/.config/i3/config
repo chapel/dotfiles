@@ -1,0 +1,217 @@
+# Use Win key as Mod
+  set $mod Mod4
+  set $left h
+  set $down j
+  set $up k
+  set $right l
+
+# Colors
+  set_from_resource $color0 i3wm.color0 #101218
+  set_from_resource $color1 i3wm.color1 #1f222d
+  set_from_resource $color2 i3wm.color2 #5294e2
+  set_from_resource $color3 i3wm.color3 #7780a1
+  set_from_resource $color4 i3wm.color4 #C0C5CE
+  set_from_resource $color5 i3wm.color5 #d1d4e0
+  set_from_resource $color6 i3wm.color6 #C9CCDB
+  set_from_resource $color7 i3wm.color7 #ffffff
+  set_from_resource $color8 i3wm.color8 #ee829f
+  set_from_resource $color9 i3wm.color9 #f99170
+  set_from_resource $color10 i3wm.color10 #ffefcc
+  set_from_resource $color11 i3wm.color11 #a5ffe1
+  set_from_resource $color12 i3wm.color12 #97e0ff
+  set_from_resource $color13 i3wm.color13 #97bbf7
+  set_from_resource $color14 i3wm.color14 #c0b7f9
+  set_from_resource $color15 i3wm.color15 #fcc09e
+
+# Monitors
+  set $monitor1 "HDMI-1"
+  set $monitor2 "HDMI-2"
+
+# Workspaces
+  set $ws1  "1"
+  set $ws2  "2"
+  set $ws3  "3"
+  set $ws4  "4"
+  set $ws5  "5"
+  set $ws6  "6"
+  set $ws7  "7"
+  set $ws8  "8"
+  set $ws9  "9"
+  set $ws10 "10"
+
+# General config
+  font pango:DejaVu Sans Book 12px
+  floating_modifier $mod
+
+# Key bindings
+  # Process control
+  bindsym $mod+c kill
+  bindsym $mod+Shift+c reload
+  bindsym $mod+Shift+r restart
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+  # Focus panels
+  bindsym $mod+$left focus left
+  bindsym $mod+$down focus down
+  bindsym $mod+$up focus up
+  bindsym $mod+$right focus right
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+  bindsym $mod+a focus parent
+
+  # Move panel between splits
+  bindsym $mod+Shift+$left move left
+  bindsym $mod+Shift+$down move down
+  bindsym $mod+Shift+$up move up
+  bindsym $mod+Shift+$right move right
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+
+  # Move panel between workspaces
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws10
+
+  # Move workspace between monitors
+  bindsym $mod+m move workspace to output right
+
+  # Scratchpad
+  bindsym $mod+Shift+minus move scratchpad
+  bindsym $mod+minus scratchpad show
+
+  # Window splitting/stacking modes
+  bindsym $mod+v split v
+  bindsym $mod+Shift+v split h
+  bindsym $mod+e layout toggle split
+  bindsym $mod+s layout stacking
+  bindsym $mod+w layout tabbed
+  bindsym $mod+f fullscreen toggle
+
+  # Floating
+  bindsym $mod+Shift+space floating toggle
+  bindsym $mod+space focus mode_toggle
+  
+  # Switch workspace
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws10
+
+  bindsym $mod+Tab workspace next
+
+  # Exec bindings
+  bindsym $mod+Return exec i3-sensible-terminal
+  bindsym $mod+Shift+Return exec i3-sensible-terminal
+  bindsym $mod+p exec rofi -show drun -p "Run"
+
+# Resize mode
+  bindsym $mod+r mode "resize"
+
+  mode "resize" {
+    # Grow
+    bindsym $left resize grow left 5 px or 5 ppt
+    bindsym $down resize grow down 5 px or 5 ppt
+    bindsym $up resize grow up 5 px or 5 ppt
+    bindsym $right resize grow right 5 px or 5 ppt
+    bindsym Left resize grow left 5 px or 5 ppt
+    bindsym Down resize grow down 5 px or 5 ppt
+    bindsym Up resize grow up 5 px or 5 ppt
+    bindsym Right resize grow right 5 px or 5 ppt
+
+    # Shrink
+    bindsym Shift+$left resize shrink right 5 px or 5 ppt
+    bindsym Shift+$down resize shrink up 5 px or 5 ppt
+    bindsym Shift+$up resize shrink down 5 px or 5 ppt
+    bindsym Shift+$right resize shrink left 5 px or 5 ppt
+    bindsym Shift+Left resize shrink right 5 px or 5 ppt
+    bindsym Shift+Down resize shrink up 5 px or 5 ppt
+    bindsym Shift+Up resize shrink down 5 px or 5 ppt
+    bindsym Shift+Right resize shrink left 5 px or 5 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym q mode "default"
+  }
+
+  # Multimedia Keys
+  bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse sset Master 5%+ unmute"
+  bindsym XF86AudioLowerVolume exec "amixer -q -D pulse sset Master 5%- unmute"
+  bindsym XF86AudioMute exec "(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute"
+
+  bindsym XF86AudioPlay exec playerctl play-pause
+  bindsym XF86AudioNext exec playerctl next
+  bindsym XF86AudioPrev exec playerctl previous
+
+# Bar config
+  bar {
+    status_command polybar Bar
+    tray_output primary
+    separator_symbol "//"
+
+#    strip_workspace_numbers yes
+
+    position top
+    mode invisible
+  }
+
+# Styles
+
+  # Widow Colours
+  #                       border  background text     indicator
+  client.focused          $color8 $color8    $color15 $color15
+  client.focused_inactive $color0 $color0    $color7  $color0
+  client.unfocused        $color0 $color0    $color7  $color0
+  client.urgent           $color3 $color3    $color0  $color0
+
+  smart_gaps on
+  smart_borders no_gaps
+  gaps inner 15
+
+  # Window style configs
+  for_window [class="^.*"] border pixel 2
+
+  # Applications
+  for_window [class="Lxappearance"] floating enable
+  for_window [class="feh"] floating enable
+  for_window [class="mpv"] floating enable
+  for_window [class="Pavucontrol"] floating enable
+  for_window [title="htop"] floating enable
+  for_window [window_role="pop-up"] floating enable
+  for_window [window_role="bubble"] floating enable
+  for_window [window_role="task_dialog"] floating enable
+  for_window [window_role="Preferences"] floating enable
+  for_window [window_role="dialog"] floating enable
+  for_window [window_role="menu"] floating enable
+
+  # Twitch
+  for_window [title="twitch:"] floating disable
+
+# Monitor Assignemnts
+
+# Window Assignments
+
+# Startup commands
+
+  # Set volume to healthy default
+  exec --no-startup-id "amixer -q -D pulse sset Master 100% unmute"
+  # Start synergy
+  exec --no-startup-id "synergy-start"
+  # Start compton
+  exec --no-startup-id "compton -b --config ~/.config/compton.conf"
