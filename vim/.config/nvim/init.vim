@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 """ Plugins
 " Search
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 
