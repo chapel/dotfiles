@@ -13,3 +13,5 @@ PS1='[\u@\h \W]\$ '
 alias ls='ls --group-directories-first --color=auto -hFX'
 alias la='ls -lA --group-directories-first --color=auto -hFX'
 alias sudo='sudo '
+
+[ -f /etc/profile.d/fzf.bash ] && source /etc/profile.d/fzf.bash
