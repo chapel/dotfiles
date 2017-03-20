@@ -4,13 +4,17 @@ margin-bottom = 5
 
 
 [colors]
-white = #d1d1d1
-gray = #585858
-black = #090909
-red = #c795ae
-blue = #95aec7
-yellow = #c7ae95
-green = #aec795
+background = ${xrdb:color0}
+background-alt = ${xrdb:color8}
+foreground = ${xrdb:color15}
+foreground-alt = ${xrdb:color7}
+primary = ${xrdb:color8}
+seconary = ${xrdb:color7}
+alert = ${xrdb:color3}
+
+linecolor = ${xrdb:color15}
+bordercolor = ${xrdb:color15}
+accent = ${xrdb:color15}
 
 
 [bar/Bar]
@@ -29,15 +33,15 @@ padding-right = 1
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = updates eth volume date menu0
+modules-left = cpu memory eth
 modules-center = i3
-modules-left = cpu memory filesystem
+modules-right = updates volume date menu0
 
-background = #66090909
-foreground = ${colors.white}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 underline-size = 2
-underline-color = ${colors.white}
+underline-color = ${colors.linecolor}
 
 tray-position = right
 tray-detached = false
@@ -53,22 +57,6 @@ label = %title%
 label-maxlen = 30
 
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-;mount-1 = /home
-;mount-2 = /invalid/mountpoint
-
-label-mounted =  %free%
-label-mounted-underline = ${colors.white}
-label-mounted-padding = 1
-
-label-unmounted =
-label-unmounted-foreground = ${colors.black}
-
-
 [module/i3]
 type = internal/i3
 format = <label-mode> <label-state>
@@ -80,28 +68,30 @@ label-urgent-font = 4
 label-visible-font = 4 
 
 label-focused = %index%
-label-focused-background = ${colors.gray}
+label-focused-background = ${colors.background-alt}
 label-focused-padding = 1
 
 label-unfocused = %index%
 label-unfocused-padding = 1
-;label-unfocused-background = ${colors.black}
-label-unfocused-underlinde = ${colors.white}
+label-unfocused-underlinde = ${colors.linecolor}
 
 label-urgent = %index%!
-;label-urgent-background = ${colors.red}
 label-urgent-padding = 1
-label-urgent-foreground = ${colors.red}
+label-urgent-foreground = ${colors.foreground}
 
 label-visible = %index%
-label-visible-foreground = ${colors.white}
+label-visible-foreground = ${colors.foreground}
 label-visible-padding = 1
 
 
 [module/cpu]
-format-label = internal/cpu
+type = internal/cpu
+interval = 1
 
+label = CPU %percentage%%
+label-underline = ${colors.linecolor}
 format = <label>
+padding= 2
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -111,47 +101,39 @@ ramp-coreload-4 = ▅
 ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
-ramp-coreload-underline = ${colors.white}
-
-type = internal/cpu
-interval = 2
-label = %{F${colors.white}  %percentage% %{F-}
-label-underline = ${colors.white}
-padding= 2
+ramp-coreload-underline = ${colors.linecolor}
 
 
 [module/memory]
 type = internal/memory
 interval = 2
 
-label = %{F${colors.white}  %percentage_used% %{F-}
-label-underline = ${colors.white}
-label-foreground = ${colors.white}
+label = %gb_free%
+label-underline = ${colors.linecolor}
+label-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
-interface = enp7s0
+interface = enp11s0
 interval = 3.0
 
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected-underline = ${colors.white}
-format-disconnected-underline = ${colors.gray}
+format-connected-underline = ${colors.linecolor}
+format-disconnected-underline = ${colors.linecolor}
 
-label-connected =  
-label-disconnected = 
-label-disconnected-foreground = ${colors.gray}
+label-connected = %local_ip% %downspeed:9% %upspeed:9%
+label-disconnected = not connectd
+label-disconnected-foreground = ${colors.foreground-alt}
 
 
 [module/date]
 type = internal/date
-date-alt =   %A %H:%M 
-date =   %b/%d/%y %H:%M 
-interval = 5
-format-underline = ${colors.white}
-;format-background = ${colors.black}
-format-foreground = ${colors.white}
+date = %A %m/%d %r
+interval = 1
+format-underline = ${colors.linecolor}
+format-foreground = ${colors.foreground}
 format-padding = 1
 
 
@@ -163,25 +145,25 @@ format-volume = <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
-label-muted =  sound muted
-label-muted-foreground = ${colors.gray}
+label-muted = sound muted
+label-muted-foreground = ${colors.foreground}
 
 bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.green}
-bar-volume-foreground-1 = ${colors.green}
-bar-volume-foreground-2 = ${colors.green}
-bar-volume-foreground-3 = ${colors.green}
-bar-volume-foreground-4 = ${colors.yellow}
-bar-volume-foreground-5 = ${colors.red}
+bar-volume-foreground-0 = ${colors.accent}
+bar-volume-foreground-1 = ${colors.accent}
+bar-volume-foreground-2 = ${colors.accent}
+bar-volume-foreground-3 = ${colors.accent}
+bar-volume-foreground-4 = ${colors.accent}
+bar-volume-foreground-5 = ${colors.accent}
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator = |
 bar-volume-indicator-font = 4
-bar-volume-indicator-foreground = ${colors.white}
-bar-volume-fill = 
+bar-volume-indicator-foreground = ${colors.foreground}
+bar-volume-fill = ─
 bar-volume-fill-font = 4
-bar-volume-empty = 
+bar-volume-empty = ─
 bar-volume-empty-font = 4
-bar-volume-empty-foreground = ${colors.gray}
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
 [module/temperature]
@@ -190,9 +172,9 @@ thermal-zone = 0
 warn-temperature = 65
 
 format = <label>
-format-underline = ${colors.white}
+format-underline = ${colors.linecolor}
 format-warn = <label-warn>
-format-warn-underline = ${colors.red}
+format-warn-underline = ${colors.alert}
 
 format-padding = 1
 format-warn-padidng = 1
@@ -210,46 +192,26 @@ ramp-foreground = #55
 type = custom/menu
 
 format = <label-toggle> <menu>
-format-underline = ${colors.white}
+format-underline = ${colors.linecolor}
 format-padding = 1
 
-menu-0-0 =  shutdown
+menu-0-0 = " Shutdown "
 menu-0-0-exec = shutdown now
-menu-0-1 =  restart
+menu-0-1 = " Restart "
 menu-0-1-exec = shutdown -r now
-menu-0-2 =   cancel
 
-
-label-open =   
-label-close =
+label-open = Power
+label-close = Cancel
+label-separator = |
 
 [module/updates]
 type = custom/script
+interval = 1200
 
-exec = echo 
+format = <label>
+format-underline = ${colors.linecolor}
+format-padding = 1
+label= "%output:0:30%"
 
-
-[module/powermenu]
-type = custom/menu
-
-label-open =  power
-label-open-foreground = #e60053
-label-close =  cancel
-label-close-foreground = #e60053
-label-separator = |
-label-separator-foreground = #55
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+exec = .config/polybar/pkg.sh 
+exec-if = "ping -q -w 2 -c 1 google.com > /dev/null"
