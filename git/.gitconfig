@@ -1,3 +1,20 @@
 [user]
 	email = jacob.chapel@gmail.com
 	name = Jacob Chapel
+
+[github]
+	user = chapel
+
+[color]
+	ui = true
+
+[diff]
+	algorithm = patience
+	indentHeuristic = true
+	mnemonicPrefix = true
+
+[pull]
+	ff = only
+
+[push]
+	default = simple
