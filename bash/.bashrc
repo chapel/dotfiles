@@ -15,3 +15,5 @@ alias la='ls -lA --group-directories-first --color=auto -hFX'
 alias sudo='sudo '
 
 [ -f /etc/profile.d/fzf.bash ] && source /etc/profile.d/fzf.bash
+
+source /usr/share/nvm/init-nvm.sh
