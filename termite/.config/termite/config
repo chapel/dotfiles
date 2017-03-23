@@ -44,7 +44,7 @@ search_wrap = true
 # If unset, will reverse foreground and background
 # highlight = #2f2f2f
 
-background = #1d2021
+background = rgba(29, 32, 33, 0.9)
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 

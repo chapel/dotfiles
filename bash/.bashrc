@@ -10,7 +10,7 @@ export TZ=America/Los_Angeles
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+[[ $- = *i* ]] && source /usr/bin/liquidprompt
 
 alias ls='ls --group-directories-first --color=auto -hFX'
 alias la='ls -lA --group-directories-first --color=auto -hFX'

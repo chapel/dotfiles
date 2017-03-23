@@ -71,6 +71,9 @@ if has('termguicolors')
 	set background=dark
 
 	colorscheme gruvbox
+
+	hi Normal ctermbg=none guibg=none
+	hi NonText ctermbg=none guibg=none
 endif
 
 
