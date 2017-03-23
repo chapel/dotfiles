@@ -52,6 +52,11 @@ let g:used_javascript_libs = 'underscore,react'
 " enable
 let g:deoplete#enable_at_startup = 1
 
+"" lightline
+let g:lightline = {
+	\ 'colorscheme': 'gruvbox'
+\}
+
 
 "" General Configs
 if has('termguicolors')
