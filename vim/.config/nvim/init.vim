@@ -9,6 +9,7 @@ Plug 'pbogut/fzf-mru.vim'
 
 " Style
 Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
 "Plug 'nathanaelkane/vim-indent-guides'
 
 " Javascript
@@ -22,7 +23,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Lint
-Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+Plug 'w0rp/ale'
 
 " Init plugin system
 call plug#end()
@@ -30,6 +31,10 @@ call plug#end()
 
 
 """ Plugin Configs
+
+"" Gruvbox
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
 
 "" vim-javascript
 " syntax highlight jsdoc
@@ -49,6 +54,21 @@ let g:deoplete#enable_at_startup = 1
 
 
 "" General Configs
+if has('termguicolors')
+	" Enable 24-bit true color mode
+	set termguicolors
+
+	" change ^[ to real escape!
+	set t_8f=^[[38;2;%lu;%lu;%lum
+	set t_8b=^[[48;2;%lu;%lu;%lum
+
+	" Ensure dark background
+	set background=dark
+
+	colorscheme gruvbox
+endif
+
+
 " Add default runtime to path
 set runtimepath^=/usr/share/vim/vimfiles
 

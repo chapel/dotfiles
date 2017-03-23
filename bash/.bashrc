@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+[ -f ~/.local/bin/sensible.bash ] && source ~/.local/bin/sensible.bash
+
 #PATH=$PATH:/home/chapel/bin
 export TZ=America/Los_Angeles
 
@@ -17,5 +19,3 @@ alias sudo='sudo '
 [ -f /etc/profile.d/fzf.bash ] && source /etc/profile.d/fzf.bash
 
 source /usr/share/nvm/init-nvm.sh
-
-[ -f ~/.local/bin/sensible.bash ] && source ~/.local/bin/sensible.bash

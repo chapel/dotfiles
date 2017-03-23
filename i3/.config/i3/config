@@ -117,8 +117,7 @@
   bindsym $mod+Tab workspace next
 
   # Exec bindings
-  bindsym $mod+Return exec i3-sensible-terminal
-  bindsym $mod+Shift+Return exec i3-sensible-terminal
+  bindsym $mod+Return exec termite
   bindsym $mod+p exec rofi -show drun -p "Run"
 
 # Resize mode
