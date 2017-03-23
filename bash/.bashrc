@@ -4,7 +4,7 @@
 
 [ -f ~/.local/bin/sensible.bash ] && source ~/.local/bin/sensible.bash
 
-#PATH=$PATH:/home/chapel/bin
+PATH=$PATH:~/.local/bin
 export TZ=America/Los_Angeles
 
 # If not running interactively, don't do anything
@@ -12,8 +12,8 @@ export TZ=America/Los_Angeles
 
 [[ $- = *i* ]] && source /usr/bin/liquidprompt
 
-alias ls='ls --group-directories-first --color=auto -hFX'
-alias la='ls -lA --group-directories-first --color=auto -hFX'
+alias ls='ls -hFX --group-directories-first --color=always '
+alias la='ls -lAhFX --group-directories-first --color=always '
 alias sudo='sudo '
 
 [ -f /etc/profile.d/fzf.bash ] && source /etc/profile.d/fzf.bash
