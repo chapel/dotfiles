@@ -1,0 +1,9 @@
+LP_COLOR_PATH="$BOLD_BLUE"
+
+LP_COLOR_MARK="$BOLD_GREEN"
+
+# Set prompt input color
+LP_PS1_POSTFIX="$BOLD_GREEN"
+
+# Reset color for normal output
+trap 'tput sgr0' DEBUG

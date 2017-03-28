@@ -1,7 +1,7 @@
 [options]
 allow_bold = true
 audible_bell = false
-#clickable_url = true
+clickable_url = true
 dynamic_title = true
 font = Monospace 9
 #fullscreen = true
@@ -30,7 +30,7 @@ search_wrap = true
 #modify_other_keys = false
 
 # set size hints for the window
-#size_hints = false
+size_hints = true
 
 [colors]
 # If both of these are unset, cursor falls back to the foreground color,
